@@ -2,10 +2,17 @@
   "name": "elrecomendador",
   "module": "index.ts",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "tsx": "^4.7.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "^5.8.1",
+    "cheerio": "^1.0.0-rc.12",
+    "npx": "^10.2.2",
+    "prisma": "^5.8.1"
+  }
 }
