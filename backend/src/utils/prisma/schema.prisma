@@ -11,9 +11,25 @@ datasource db {
 }
 
 model moviesRtve {
-  id           Int    @id @default(autoincrement())
+  id           Int          @id @default(autoincrement())
   categoryName String
   categoryId   Int
   movieName    String
-  movieId      Int
+  imdbId       String?
+  movieId      Int          @unique
+  moviesTmdb   moviesTmdb[]
+}
+
+model moviesTmdb {
+  id          Int        @id @default(autoincrement())
+  rtve        moviesRtve @relation(fields: [rtveId], references: [movieId])
+  rtveId      Int
+  tmdbId      Int
+  title       String
+  overview    String
+  popularity  Float
+  releaseDate String
+  generes     String?
+  movieUrl    String?
+  runtime     Int?
 }

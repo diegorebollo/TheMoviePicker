@@ -16,13 +16,15 @@ async function main() {
         Object.entries(movies).forEach(async ([key, value]) => {
             const movieId = Number((movies)[(key as any)].id);
             const movieName = movies[(key as any)].name;
+            const imdbId = movies[(key as any)].imdbId;
 
             await prisma.moviesRtve.create({
                 data:{
                     categoryId: categoryId,
                     categoryName: categoryName,
                     movieId: movieId,
-                    movieName: movieName
+                    movieName: movieName,
+                    imdbId: imdbId
                 }
             });
             

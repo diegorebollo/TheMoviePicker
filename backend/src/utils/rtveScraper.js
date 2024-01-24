@@ -3,9 +3,9 @@ import * as cheerio from 'cheerio';
 const mainURL = 'https://www.rtve.es/play/videos/modulos/capitulos/';
 
 const rtveCategories = {
-    somosCine: 61150,
-    cineInternacional: 77590,
-    cineDeSiempre: 136150
+    'somos-cine': 61150,
+    'cine-internacional': 77590,
+    'cine-de-siempre': 136150
 };
 
 
@@ -27,7 +27,25 @@ async function getHtml(url) {
     }
 }
 
-async function scrapCategory(url){
+async function scrapImdbLink(name, id, categoryName){    
+    const nameFormatted = name.toLowerCase().replaceAll(' ', '-')
+
+    const url = `https://www.rtve.es/play/videos/${categoryName}/${nameFormatted}/${id}/`
+
+    const html = await getHtml(url)
+    const $ = cheerio.load(html)
+    const imdbURL =  $('.logo_imdb').attr('href')
+
+    if (imdbURL != undefined){
+        const imdbId =  imdbURL.split('/')[4]
+        return imdbId
+    };   
+
+};
+
+async function scrapCategory(categoryId, categoryName){
+
+    const url = mainURL + categoryId;   
 
     const movies = [];
     let pageNumber = 1;
@@ -42,11 +60,13 @@ async function scrapCategory(url){
         const allMovies = $('div .cellBox');
 
         
-        allMovies.each((index, elemnet) => {
+        allMovies.each(async (index, elemnet) => {
             const id = elemnet.attribs['data-idasset'];            
-            const name = $(elemnet).find('.maintitle').text();            
-            movies.push({id: id, name: name});          
-        })
+            const name = $(elemnet).find('.maintitle').text();
+            const imdbId = await scrapImdbLink(name, id, categoryName)
+   
+            movies.push({id: id, name: name, imdbId: imdbId});          
+        });
         
         pageNumber ++;
     }    
@@ -55,15 +75,13 @@ async function scrapCategory(url){
 
 
 export async function scrapAllCategories() {
-    
+  
     const allCategories = [];
 
     for(const category in rtveCategories){        
-        const array = {categoryName: category, categoryId: rtveCategories[category], movies: []};  
-
-        const url = mainURL + rtveCategories[category];         
-        const movies = await scrapCategory(url);       
-
+        const array = {categoryName: category, categoryId: rtveCategories[category], movies: []};
+                    
+        const movies = await scrapCategory(rtveCategories[category], category);      
         array.movies = movies;        
         allCategories.push(array);
     }
