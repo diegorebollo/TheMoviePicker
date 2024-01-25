@@ -81,16 +81,14 @@ nav .login{
 
 
 .main-container{   
-    /* width: 92%; */
+    width: 92%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-
-    background-color: aqua;
-
-    /* gap: 100px; */
+    /* justify-content: center; */
     height: 100%;
+
+    gap: 40px;
 
     
 }
@@ -99,6 +97,7 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px;
 }
 
 header h1 {
@@ -106,7 +105,7 @@ header h1 {
     font-size: 4rem;
 }
 
-header h2 {
+header h3 {
     color: #888890;
     font-size: 1.1rem;
     font-weight: 500;
@@ -115,15 +114,41 @@ header h2 {
 
 
 main {
-
     display: flex;
-    gap: 30px;
+    flex-direction: column;
     justify-self: center;
-
-
+    align-items: center;    
 } 
 
-main div {
+main h2 {
+    margin-top: 0;
+}
+
+main button {
+    font: inherit;
+    font-size: 1rem;
+    border: none;
+    background-color: #fbfbfb;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px 10px 10px 10px;
+    transition: background-color 400ms ease-out;
+}
+
+
+main button:hover {
+    background-color: #dadada;
+    cursor: pointer;
+
+}
+
+.questions{
+    display: flex;
+    gap: 30px;
+
+}
+
+.questions div {
     background-color:rgb(44, 44, 44);
     width: 300px;
     height: 300px;    
