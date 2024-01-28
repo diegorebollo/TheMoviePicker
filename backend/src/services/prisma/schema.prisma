@@ -33,3 +33,9 @@ model moviesTmdb {
   movieUrl    String?
   runtime     Int?
 }
+
+model questions {
+  id      Int    @id @default(autoincrement())
+  title   String
+  options String
+}

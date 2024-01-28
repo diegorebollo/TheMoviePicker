@@ -10,9 +10,11 @@
   },
   "type": "module",
   "dependencies": {
+    "@fastify/cors": "^9.0.0",
     "@prisma/client": "^5.8.1",
     "cheerio": "^1.0.0-rc.12",
-    "npx": "^10.2.2",
+    "fastify": "^4.25.2",
+    "npx": "^3.0.0",
     "prisma": "^5.8.1"
   }
 }
