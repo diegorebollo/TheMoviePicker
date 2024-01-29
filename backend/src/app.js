@@ -12,10 +12,8 @@ const prisma = new PrismaClient();
 
 app.get('/api/questions', async (req, reply) => {
 
-    const testBusqueda = await prisma.moviesTmdb.findMany()
-
-   
-    return 'hello';
+    const allQuestions = await prisma.questions.findMany();   
+    return allQuestions;
 });
 
 

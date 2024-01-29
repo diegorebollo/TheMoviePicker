@@ -7,7 +7,7 @@ export const routes: Routes = [
         { path: '',
          component: HeaderComponent
         }, {
-            path: 'start',
+            path: 'questions',
             component: QuestionsPanelComponent
         }]},
 ];

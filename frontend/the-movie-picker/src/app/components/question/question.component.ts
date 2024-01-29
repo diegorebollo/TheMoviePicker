@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -8,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './question.component.css'
 })
 export class QuestionComponent {
+  @Input() text!: string;
+  @Input() optionName!: string;
+  @Output() optionChosen = new EventEmitter<object>();
 
-}
+
+  onClick(){
+    this.optionChosen.emit({optionName: this.optionName, optionChosen: this.text});
+  };
+
+};
+
+

@@ -25,6 +25,7 @@ async function main() {
     await prisma.questions.create({
         data: {
             title: 'Do you prefer short or long movies?',
+            optionName: 'runtime',
             options: 'Short, Long'            
         }
     });
@@ -32,6 +33,7 @@ async function main() {
     await prisma.questions.create({
         data: {
             title: 'Do you prefer a new movie or an old one?',
+            optionName: 'releaseDate',
             options: 'New, Old'            
         }
     });
@@ -39,6 +41,7 @@ async function main() {
         await prisma.questions.create({
         data: {
             title: 'Do you prefer something popular or something unknown?',
+            optionName: 'popularity',
             options: 'Popular, Unknown'            
         }
     });
@@ -46,6 +49,7 @@ async function main() {
     await prisma.questions.create({
         data: {
             title: 'What movie genre do you prefer out of these ones?',
+            optionName: 'generes',
             options: allGeneres.toString()            
         }
     });

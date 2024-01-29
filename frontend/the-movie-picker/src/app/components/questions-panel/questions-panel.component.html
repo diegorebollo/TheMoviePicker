@@ -1,7 +1,11 @@
 <div class="app-questions-panel">
-  <h2>¿Tus putos muertos no?</h2>
+  <h2>{{ this.questionTitle }}</h2>
   <div class="questions">
-    <app-question></app-question>
-    <app-question></app-question>
+    <app-question
+      *ngFor="let question of questionOptions.options"
+      [text]="question"
+      [optionName]="questionOptions.optionName"
+      (optionChosen)="addOptionChosen($event)"
+    ></app-question>
   </div>
 </div>
