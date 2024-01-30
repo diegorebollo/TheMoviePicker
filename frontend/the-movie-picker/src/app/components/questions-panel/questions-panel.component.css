@@ -13,6 +13,16 @@ h2 {
 
 .questions{
     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    
     gap: 30px;
 
 }
+
+/* @media (max-width: 800px) {
+    .questions {
+      flex-direction: column;
+      gap: 20px;
+    }
+  } */

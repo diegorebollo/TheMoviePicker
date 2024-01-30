@@ -28,3 +28,13 @@
     font-weight: bold; 
     /* visibility: hidden;   */
 }
+
+@media only screen and (max-width: 600px) {
+    .nav-bar{
+        padding-left: 12px;
+        padding-right: 12px;  
+
+
+    }
+
+  }

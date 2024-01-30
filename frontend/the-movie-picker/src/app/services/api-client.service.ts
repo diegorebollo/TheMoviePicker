@@ -8,7 +8,7 @@ import { Question } from '../interfaces/question';
 })
 export class ApiClientService {
 
-  mainUrl = 'http://127.0.0.1:3000/api'
+  mainUrl = 'http://192.168.0.25:3000/api'
 
   constructor(private http: HttpClient) {};
   
@@ -17,7 +17,10 @@ export class ApiClientService {
   }
 
   sendData(data: any): Observable<any> {
-    return this.http.post<any>(`${this.mainUrl}/result`, data);
+    const test = this.http.post<any>(`${this.mainUrl}/result`, data);
+    console.log(test)
+    return test
+
   }
 };
 

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, isDevMode } from '@angular/core';
 import { QuestionComponent } from '../question/question.component';
 import { Question } from '../../interfaces/question';
 import { ApiClientService } from '../../services/api-client.service';
@@ -16,11 +16,13 @@ export class QuestionsPanelComponent {
 
   numberOfQuestion!: number;
   allQuestions!: Question[];
-
+  
   questionTitle!: string;  
   questionOptions: {optionName: string, options: any} = {optionName: '', options: []} ;
 
   optionsChosen: object[] = [];
+
+  isSend = false;
 
   apiClient = inject(ApiClientService);
 
@@ -70,13 +72,11 @@ export class QuestionsPanelComponent {
   addOptionChosen(optionChosen: object){
     this.optionsChosen.push(optionChosen);
 
-    if(this.numberOfQuestion >= 0 && this.numberOfQuestion >= this.allQuestions.length - 1){
-      this.apiClient.sendData(this.optionsChosen).subscribe()
-
-    } else {
-      this.numberOfQuestion ++;
-    };   
-
+    if(!this.isSend && this.numberOfQuestion >= 0 && this.numberOfQuestion >= this.allQuestions.length - 1 ){
+      this.isSend = true;
+      this.apiClient.sendData(this.optionsChosen).subscribe((response) => console.log(response));
+    };
+    this.numberOfQuestion ++;
   };
 
 };

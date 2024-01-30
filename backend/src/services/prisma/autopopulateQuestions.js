@@ -4,7 +4,7 @@ const prisma = new PrismaClient()
 
 async function main() {
 
-    const allGeneres: string[] = [] ;
+    const allGeneres = [] ;
 
     const allMovieGeneres = await prisma.moviesTmdb.findMany({
         select: {
