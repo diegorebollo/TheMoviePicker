@@ -7,11 +7,15 @@ const options = {
   };
   
 
-export async function getGenresList() {      
-  const apiResult =  fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en`, options)
-  .then(response => response.json())
-  .catch(err => console.error(err));
-  return apiResult
+export async function getGenresList(waitTime) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en`, options)
+        .then(response => response.json())
+        .then(data => resolve(data))
+        .catch(error => reject(error));
+    }, waitTime);
+  });
 }
 
 export async function getMovie(imdbId, waitTime) {

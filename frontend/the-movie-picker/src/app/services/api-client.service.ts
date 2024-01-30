@@ -15,4 +15,10 @@ export class ApiClientService {
   getAllQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(`${this.mainUrl}/questions`) 
   }
+
+  sendData(data: any): Observable<any> {
+    return this.http.post<any>(`${this.mainUrl}/result`, data);
+  }
 };
+
+

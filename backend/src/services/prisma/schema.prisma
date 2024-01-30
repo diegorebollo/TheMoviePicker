@@ -21,17 +21,18 @@ model moviesRtve {
 }
 
 model moviesTmdb {
-  id          Int        @id @default(autoincrement())
-  rtve        moviesRtve @relation(fields: [rtveId], references: [movieId])
-  rtveId      Int
-  tmdbId      Int
-  title       String
-  overview    String
-  popularity  Float
-  releaseDate String
-  generes     String?
-  movieUrl    String?
-  runtime     Int?
+  id              Int        @id @default(autoincrement())
+  rtve            moviesRtve @relation(fields: [rtveId], references: [movieId])
+  rtveId          Int
+  tmdbId          Int
+  title           String
+  overview        String
+  popularity      Float
+  releaseDate     String
+  releaseDateYear Int?
+  generes         String?
+  movieUrl        String?
+  runtime         Int?
 }
 
 model questions {

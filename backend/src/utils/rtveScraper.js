@@ -8,7 +8,6 @@ const rtveCategories = {
     'cine-de-siempre': 136150
 };
 
-
 async function getHtml(url) {
 
     try {
@@ -16,23 +15,42 @@ async function getHtml(url) {
         const response = await fetch(url);
 
         if(!response.ok){
-            throw new Error(`Could not fetch`);
+            console.error('Could not fetch')          
         }        
         const html = await response.text();
         return html;
 
-
     } catch(error) {
         console.error(error);
     }
+
 }
+
+// async function getHtml(url, delay) {
+//     try {
+//         console.log(`Fetching...\nURL: ${url}`);
+//         const response = await fetch(url);
+
+//         if (!response.ok) {
+//             throw new Error(`Could not fetch`);
+//         }
+
+//         const html = await response.text();
+
+//         await new Promise(resolve => setTimeout(resolve, delay));
+
+//         return html;
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
 
 async function scrapImdbLink(name, id, categoryName){    
     const nameFormatted = name.toLowerCase().replaceAll(' ', '-')
 
     const url = `https://www.rtve.es/play/videos/${categoryName}/${nameFormatted}/${id}/`
 
-    const html = await getHtml(url)
+    const html = await getHtml(url, 500)
     const $ = cheerio.load(html)
     const imdbURL =  $('.logo_imdb').attr('href')
 
@@ -54,7 +72,7 @@ async function scrapCategory(categoryId, categoryName){
         const fullUrl = `${url}?page=${pageNumber}`;   
         const html = await getHtml(fullUrl);
 
-        if (html === undefined){break};
+        if (html.includes('<title>')){break};
         
         const $ = cheerio.load(html);        
         const allMovies = $('div .cellBox');
@@ -74,7 +92,7 @@ async function scrapCategory(categoryId, categoryName){
 }
 
 
-export async function scrapAllCategories() {
+export async function scrapAllCategories() {       
   
     const allCategories = [];
 
@@ -88,3 +106,5 @@ export async function scrapAllCategories() {
 
     return allCategories;
 };
+
+

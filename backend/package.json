@@ -14,7 +14,9 @@
     "@prisma/client": "^5.8.1",
     "cheerio": "^1.0.0-rc.12",
     "fastify": "^4.25.2",
+    "nodemon": "^3.0.3",
     "npx": "^3.0.0",
-    "prisma": "^5.8.1"
+    "prisma": "^5.8.1",
+    "ts-node": "^10.9.2"
   }
 }

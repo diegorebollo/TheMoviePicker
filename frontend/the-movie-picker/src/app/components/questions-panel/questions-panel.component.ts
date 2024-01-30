@@ -56,8 +56,7 @@ export class QuestionsPanelComponent {
         }
         
       }
-      this.questionOptions = {optionName: this.allQuestions[this.numberOfQuestion].optionName, options: randomOptions};  
-           
+      this.questionOptions = {optionName: this.allQuestions[this.numberOfQuestion].optionName, options: randomOptions};             
 
 
     } else if (this.numberOfQuestion >= 0 && this.numberOfQuestion < this.allQuestions.length) {
@@ -72,11 +71,11 @@ export class QuestionsPanelComponent {
     this.optionsChosen.push(optionChosen);
 
     if(this.numberOfQuestion >= 0 && this.numberOfQuestion >= this.allQuestions.length - 1){
-      console.log(this.optionsChosen)
+      this.apiClient.sendData(this.optionsChosen).subscribe()
+
     } else {
       this.numberOfQuestion ++;
-    }
-    
+    };   
 
   };
 
