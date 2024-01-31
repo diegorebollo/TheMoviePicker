@@ -17,16 +17,16 @@ async function main() {
         if (movieImdbId === null){
             console.log(movieTitle, movieImdbId, 'No IMDB ID')
         } else {
-            const apiData = await getMovie(movieImdbId, 700);
+            const apiData = await getMovie(movieImdbId, 3000);
+           
+            const [movieApiData] = apiData['movie_results'];             
             
-            const [movieApiData] = apiData['movie_results'];            
-
             if (movieApiData === undefined){
                 console.log(movieTitle, movieRtveId, 'Not Found');
             } else {
                 const genre_ids = movieApiData['genre_ids'];
                 const generes =  genre_ids.map(id => genresList['genres'].find(genere => genere.id === id).name).join();
-                const moreMovieData = await getMoreInfo(movieApiData.id, 350);
+                const moreMovieData = await getMoreInfo(movieApiData.id, 3000);
                 const releaseDateYear = Number(movieApiData.release_date.split('-')[0])
 
                 await prisma.moviesTmdb.create({

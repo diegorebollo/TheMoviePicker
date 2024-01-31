@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -10,8 +11,16 @@ import { Component, Input } from '@angular/core';
 export class MovieComponent {
   @Input() movie!: any;
 
+  router = inject(Router);
+
   onClick(movie: any){
-    console.log(movie)
+
+    const navigationExtras: NavigationExtras = {
+      state: {movie: movie},
+    }; 
+    
+    this.router.navigate(['/player'], navigationExtras);   
+
   }  
 
 }

@@ -65,6 +65,12 @@ app.post('/api/result', async(req, reply) => {
             releaseDateYear: queryData[1].optionChosen,
             popularity: queryData[2].optionChosen,
             generes: queryData[3].optionChosen,
+            movieUrl: {
+                not: null
+            },
+            posterPath: {
+                not: null
+            }
 
         }
     })
@@ -76,7 +82,14 @@ app.post('/api/result', async(req, reply) => {
                 runtime: queryData[0].optionChosen,
                 releaseDateYear: queryData[1].optionChosen,
                 // popularity: queryData[2].optionChosen,
-                generes: queryData[3].optionChosen,    
+                generes: queryData[3].optionChosen,
+                movieUrl: {
+                    not: null
+                },
+                posterPath: {
+                    not: null
+                }
+    
             }
         })        
     } 
@@ -88,9 +101,16 @@ app.post('/api/result', async(req, reply) => {
                 runtime: queryData[0].optionChosen,
                 // releaseDateYear: queryData[1].optionChosen,
                 // popularity: queryData[2].optionChosen,
-                generes: queryData[3].optionChosen,    
+                generes: queryData[3].optionChosen,
+                movieUrl: {
+                    not: null
+                },
+                posterPath: {
+                    not: null
+                }
+    
             }
-        })        
+        })       
     }
     
     if (moviesSelection.length < 1){
@@ -100,9 +120,16 @@ app.post('/api/result', async(req, reply) => {
                 // runtime: queryData[0].optionChosen,
                 // releaseDateYear: queryData[1].optionChosen,
                 // popularity: queryData[2].optionChosen,
-                generes: queryData[3].optionChosen,    
+                generes: queryData[3].optionChosen,
+                movieUrl: {
+                    not: null
+                },
+                posterPath: {
+                    not: null
+                }
+    
             }
-        });      
+        })     
     };
     reply.send(moviesSelection);
 });

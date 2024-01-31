@@ -18,7 +18,7 @@ export class MoviesPanelComponent {
 
     const moviesData = history.state.movies;
     
-    const howManyOptions = 3;
+    const howManyOptions = 4;
 
     if (moviesData.length > howManyOptions){
 
@@ -37,7 +37,6 @@ export class MoviesPanelComponent {
     } else {
       this.movies = moviesData;
     }
-
     this.text = this.movies.length === 1 ? "Here's our recommendation" : 'Which movie poster do you prefer?';
   }
 
