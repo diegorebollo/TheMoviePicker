@@ -1,0 +1,15 @@
+img{
+    border-radius: 5%;
+    max-width: 200px;
+
+    transition: max-width 150ms ease-in-out;
+
+
+}
+
+img:hover{
+    max-width: 210px;
+    cursor: pointer;
+
+    
+}

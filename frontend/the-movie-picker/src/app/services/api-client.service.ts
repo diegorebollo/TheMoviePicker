@@ -17,10 +17,7 @@ export class ApiClientService {
   }
 
   sendData(data: any): Observable<any> {
-    const test = this.http.post<any>(`${this.mainUrl}/result`, data);
-    console.log(test)
-    return test
-
+    return this.http.post<any>(`${this.mainUrl}/result`, data);
   }
 };
 

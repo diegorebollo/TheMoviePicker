@@ -33,6 +33,7 @@ model moviesTmdb {
   generes         String?
   movieUrl        String?
   runtime         Int?
+  posterPath      String?
 }
 
 model questions {

@@ -40,7 +40,9 @@ async function main() {
                         releaseDate: movieApiData.release_date,
                         releaseDateYear: releaseDateYear,
                         generes: generes,
-                        runtime: moreMovieData.runtime                        
+                        runtime: moreMovieData.runtime,
+                        posterPath: moreMovieData.poster_path
+                                                
                     }
                 })
             }

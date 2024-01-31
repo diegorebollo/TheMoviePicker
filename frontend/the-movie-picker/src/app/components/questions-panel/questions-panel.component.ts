@@ -1,8 +1,9 @@
-import { Component, inject, isDevMode } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { QuestionComponent } from '../question/question.component';
 import { Question } from '../../interfaces/question';
 import { ApiClientService } from '../../services/api-client.service';
 import { NgFor } from '@angular/common';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-questions-panel',
@@ -25,6 +26,7 @@ export class QuestionsPanelComponent {
   isSend = false;
 
   apiClient = inject(ApiClientService);
+  router = inject(Router);
 
   ngOnInit(){       
     this.apiClient.getAllQuestions().subscribe(e => {
@@ -74,7 +76,15 @@ export class QuestionsPanelComponent {
 
     if(!this.isSend && this.numberOfQuestion >= 0 && this.numberOfQuestion >= this.allQuestions.length - 1 ){
       this.isSend = true;
-      this.apiClient.sendData(this.optionsChosen).subscribe((response) => console.log(response));
+      this.apiClient.sendData(this.optionsChosen).subscribe((response) => {
+
+        const navigationExtras: NavigationExtras = {
+          state: {movies: response},
+        };  
+
+        this.router.navigate(['/movies'], navigationExtras);    
+      });     
+   
     };
     this.numberOfQuestion ++;
   };

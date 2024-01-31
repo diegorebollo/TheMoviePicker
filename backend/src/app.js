@@ -102,8 +102,8 @@ app.post('/api/result', async(req, reply) => {
                 // popularity: queryData[2].optionChosen,
                 generes: queryData[3].optionChosen,    
             }
-        })        
-    } 
+        });      
+    };
     reply.send(moviesSelection);
 });
 
