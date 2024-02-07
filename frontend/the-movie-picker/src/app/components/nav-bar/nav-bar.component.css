@@ -26,7 +26,7 @@
 .login{
     color: #828284;
     font-weight: bold; 
-    /* visibility: hidden;   */
+    visibility: hidden;  
 }
 
 @media only screen and (max-width: 600px) {

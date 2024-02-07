@@ -1,35 +1,26 @@
-<vg-player (onPlayerReady)="($event)">
-  <!-- <vg-overlay-play></vg-overlay-play> -->
-  <!-- <vg-buffering></vg-buffering> -->
-
+<vg-player>
   <vg-scrub-bar>
     <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
     <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
   </vg-scrub-bar>
-
   <vg-controls>
     <vg-play-pause></vg-play-pause>
     <vg-playback-button></vg-playback-button>
-
     <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-
     <vg-scrub-bar style="pointer-events: none"></vg-scrub-bar>
-
-    <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
-    <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-
-    <!-- <vg-track-selector></vg-track-selector> -->
+    <!-- <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display> -->
+    <!-- <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display> -->
     <vg-mute></vg-mute>
     <vg-volume></vg-volume>
-
     <vg-fullscreen></vg-fullscreen>
   </vg-controls>
-
   <video
-    #myMedia
-    [vgHls]="'http://static.videogular.com/assets/videos/videogular.m3u8'"
-    id="my-video"
-    type="video/mp4"
-    controls
+    [vgMedia]="$any(media)"
+    #media
+    [src]="movieURL"
+    id="singleVideo"
+    preload="auto"
+    autoplay="true"
+    crossorigin
   ></video>
 </vg-player>

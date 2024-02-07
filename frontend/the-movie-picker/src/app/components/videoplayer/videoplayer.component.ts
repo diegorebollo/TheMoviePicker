@@ -17,23 +17,10 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 export class VideoplayerComponent {
   movieData!: any;
   movieURL!: any;
-  vgHls!: string;
-  api:VgApiService = new VgApiService;
-
 
   ngOnInit(){
     this.movieData = history.state.movie;
     this.movieURL = this.movieData.movieUrl.split(',')[2].split("b'")[1].split("'")[0];
-    // this.movieURL = this.movieData.movieUrl.split(',')[0].split("'")[1];
-    console.log(this.movieURL)
  };
-
-  onPlayerReady(){
-    console.log(this.api)   
-    console.log('ddd') 
-  }
-
   
-
-
 }

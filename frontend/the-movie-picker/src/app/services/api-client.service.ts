@@ -8,7 +8,7 @@ import { Question } from '../interfaces/question';
 })
 export class ApiClientService {
 
-  mainUrl = 'http://192.168.0.25:3000/api'
+  mainUrl = 'https://api.drebollo.com/api'
 
   constructor(private http: HttpClient) {};
   

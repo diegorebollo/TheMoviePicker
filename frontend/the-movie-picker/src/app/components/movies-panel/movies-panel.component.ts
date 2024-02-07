@@ -16,7 +16,7 @@ export class MoviesPanelComponent {
 
   ngOnInit(){
 
-    const moviesData = history.state.movies;
+    const moviesData: any = history.state.movies;
     
     const howManyOptions = 4;
 
